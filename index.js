@@ -65,14 +65,14 @@ var Breakout = new Phaser.Class({
 
     hitBrick: function (ball, brick)
     {
-    //     brick.disableBody(true, true);
+        brick.disableBody(true, true);
 
-    //     if (this.bricks.countActive() === 0)
-    //     {
-    //         this.resetLevel();
-    //     }
+        if (this.bricks.countActive() === 0)
+        {
+            this.resetLevel();
+        }
 
-    //     // ball.disableBody(true, true);
+        ball.disableBody(true, true);
     },
 
     resetBall: function ()
@@ -95,10 +95,11 @@ var Breakout = new Phaser.Class({
         });
     },
 
-    // hitPaddle: function (ball, paddle)
-    // {
-    //     ball.disableBody(true, true);
-    // },
+    hitPaddle: function (ball, paddle)
+    {
+        ball.disableBody(true, true);
+        paddle.enableBody();
+    },
 
     update: function ()
     {
