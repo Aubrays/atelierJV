@@ -16,10 +16,29 @@ var Breakout = new Phaser.Class({
     preload: function ()
     {
         this.load.atlas('assets', 'wall/the_wall.png', 'wall/the_wall_atlas.json');
+        this.load.audio("music", ["sounds/soviet-march.ogg"]);
+        this.load.audio("breakbrick", ["sounds/breakbrick.ogg"]);
+        this.load.audio("explosion", ["sounds/explosion.ogg"]);
+        this.load.audio("hitguard", ["sounds/hitguard.ogg"]);
+        this.load.audio("intercept", ["sounds/intercept.ogg"]);
     },
 
     create: function ()
     {
+        this.music = this.sound.add("music");
+
+    var musicConfig = {
+        mute: false,
+        volume: 1,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0
+}
+
+this.music.play(musicConfig);
+
         //  Enable world bounds, but disable the wall and floor
         this.physics.world.setBoundsCollision(true, true, false, false);
 
@@ -67,11 +86,12 @@ var Breakout = new Phaser.Class({
     {
         brick.disableBody(true, true);
 
-        if (this.bricks.countActive() === 0)
+       if (this.bricks.countActive() === 0)
         {
             this.resetLevel();
         }
-
+        this.breakbrick = this.sound.add("breakbrick");
+        this.breakbrick.play();
         ball.disableBody(true, true);
     },
 
@@ -80,7 +100,6 @@ var Breakout = new Phaser.Class({
         // this.ball.setVelocity(0);
         // this.ball.setPosition(this.paddle.x, 500);
         // this.ball.setData('onPaddle', true);
-
     },
 
     resetLevel: function ()
