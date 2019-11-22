@@ -90,7 +90,7 @@ this.music.play(musicConfig);
         {
             this.resetLevel();
         }
-    this.breakbrick = this.sound.add("breakBrick");
+    this.breakBrick = this.sound.add("breakBrick");
     this.breakBrick.play();
         ball.disableBody(true, true);
     },
@@ -114,10 +114,11 @@ this.music.play(musicConfig);
         });
     },
 
-    // hitPaddle: function (ball, paddle)
-    // {
-    //     ball.disableBody(true, true);
-    // },
+    hitPaddle: function (ball, paddle)
+    {
+        ball.disableBody(true, true);
+        paddle.enableBody();
+    },
 
     update: function ()
     {
