@@ -17,9 +17,9 @@ var Breakout = new Phaser.Class({
     {
         this.load.atlas('assets', 'wall/the_wall.png', 'wall/the_wall_atlas.json');
         this.load.audio("music", ["sounds/soviet-march.ogg"]);
-        this.load.audio("breakbrick", ["sounds/breakbrick.ogg"]);
+        this.load.audio("breakBrick", ["sounds/breakbrick.ogg"]);
         this.load.audio("explosion", ["sounds/explosion.ogg"]);
-        this.load.audio("hitguard", ["sounds/hitguard.ogg"]);
+        this.load.audio("hitGuard", ["sounds/hitguard.ogg"]);
         this.load.audio("intercept", ["sounds/intercept.ogg"]);
     },
 
@@ -84,15 +84,15 @@ this.music.play(musicConfig);
 
     hitBrick: function (ball, brick)
     {
-    //     brick.disableBody(true, true);
+        brick.disableBody(true, true);
 
-    //     if (this.bricks.countActive() === 0)
-    //     {
-    //         this.resetLevel();
-    //     }
-    // this.breakbrick = this.sound.add("breakbrick");
-    // this.name.play();
-    //     // ball.disableBody(true, true);
+        if (this.bricks.countActive() === 0)
+        {
+            this.resetLevel();
+        }
+    this.breakbrick = this.sound.add("breakBrick");
+    this.breakBrick.play();
+        ball.disableBody(true, true);
     },
 
     resetBall: function ()
