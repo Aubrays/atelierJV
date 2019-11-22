@@ -46,7 +46,7 @@ var Breakout = new Phaser.Class({
         // this.ball = this.physics.add.image(400, 500, 'assets', 'bomb').setCollideWorldBounds(true).setBounce(1);
         // this.ball.setData('onPaddle', true);
 
-        this.paddle = this.physics.add.image(400, (gridHeight+1)*32, 'assets', 'guards').setImmovable();
+        this.paddle = this.physics.add.image(400, (gridHeight+2)*32, 'assets', 'guards').setImmovable();
 
         //  Our colliders
         this.physics.add.collider(this.balls, this.bricks, this.hitBrick, null, this);
