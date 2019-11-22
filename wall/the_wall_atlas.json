@@ -1,0 +1,73 @@
+{
+    "frames": [
+        {
+            "filename": "bomb",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 24
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "brick",
+            "frame": {
+                "x": 0,
+                "y": 24,
+                "w": 64,
+                "h": 32
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "brokenbrick",
+            "frame": {
+                "x": 0,
+                "y": 48,
+                "w": 64,
+                "h": 32
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "guards",
+            "frame": {
+                "x": 0,
+                "y": 120,
+                "w": 64,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "stone",
+            "frame": {
+                "x": 0,
+                "y": 120,
+                "w": 16,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
