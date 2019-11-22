@@ -10,7 +10,7 @@ var Breakout = new Phaser.Class({
 
         this.bricks;
         this.paddle;
-        // this.ball;
+        this.ballsGroup;
     },
 
     preload: function ()
@@ -56,20 +56,15 @@ this.music.play(musicConfig);
         // Create balls 
         this.ballsGroup = this.physics.add.group();
         for(let i=0; i < 10; i++){
-            this.ballPool = this.ballsGroup.create(0, 0, 'assets', 'bomb').setCollideWorldBounds(true);
+            this.ballPool = this.ballsGroup.create(0, 0, 'assets', 'bomb').setCollideWorldBounds(true).setBounce(1);
             this.placeBalls();
         }
-        
 
-
-        // this.ball = this.physics.add.image(400, 500, 'assets', 'bomb').setCollideWorldBounds(true).setBounce(1);
-        // this.ball.setData('onPaddle', true);
-
-        this.paddle = this.physics.add.image(400, (gridHeight+1)*32, 'assets', 'guards').setImmovable();
+        this.paddle = this.physics.add.image(400, (gridHeight+2)*32, 'assets', 'guards').setImmovable();
 
         //  Our colliders
-        this.physics.add.collider(this.balls, this.bricks, this.hitBrick, null, this);
-        this.physics.add.collider(this.balls, this.paddle, this.hitPaddle, null, this);
+        this.physics.add.collider(this.ballsGroup, this.bricks, this.hitBrick, null, this);
+        this.physics.add.collider(this.ballsGroup, this.paddle, this.hitPaddle, null, this);
 
         //  Input events
         this.input.on('pointermove', function (pointer) {
@@ -77,39 +72,18 @@ this.music.play(musicConfig);
             //  Keep the paddle within the game
             this.paddle.x = Phaser.Math.Clamp(pointer.x, 52, 748);
 
-            // if (this.ball.getData('onPaddle'))
-            // {
-            //     this.ball.x = this.paddle.x;
-            // }
-
         }, this);
-
-        this.input.on('pointerup', function (pointer) {
-
-            // if (this.ball.getData('onPaddle'))
-            // {
-            //     this.ball.setVelocity(-75, -300);
-            //     this.ball.setData('onPaddle', false);
-            // }
-
-        }, this);
-    },
-
-    addBalls: function()
-    {
-
-         
     },
 
     placeBalls: function()
     {
-     this.ballPool.y = config.height;
-     this.ballPool.x = Phaser.Math.Between(0, config.width);
-    //  this.ballPool.setVelocity(75, 300);
+        this.ballPool.y = config.height;
+        this.ballPool.x = Phaser.Math.Between(0, config.width);
+        this.ballPool.setVelocity(-75, -300);
     },
 
-    // hitBrick: function (ball, brick)
-    // {
+    hitBrick: function (ball, brick)
+    {
     //     brick.disableBody(true, true);
 
     //     if (this.bricks.countActive() === 0)
@@ -119,7 +93,7 @@ this.music.play(musicConfig);
     // this.breakbrick = this.sound.add("breakbrick");
     // this.name.play();
     //     // ball.disableBody(true, true);
-    // },
+    },
 
     resetBall: function ()
     {
